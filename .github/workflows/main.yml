@@ -1,0 +1,21 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Conan
+      run: pip3 install conan
+    - name: Install dependencies
+      run: |
+        mkdir build
+        cd build
+        conan install ..
+    - name: Build
+      run: |
+        cd build
+        cmake .. -DCMAKE_MODULE_PATH=$PWD
+        make

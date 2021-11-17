@@ -1,0 +1,7 @@
+[requires]
+armadillo/10.7.0
+
+[generators]
+cmake_find_package
+
+
